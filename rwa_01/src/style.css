@@ -1,0 +1,39 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    font-style: oblique;
+}
+
+.input-date{
+    display: flex;
+    margin-top: 20px;
+    width: 250px;
+}
+
+.btn-show-me{
+    display: flex;
+    margin-top: 20px;
+    width: 130px;
+    height: 50px;
+    font-size: x-large;
+    padding: 5px;
+    
+}
+.info-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+}
+.labele{
+    font: italic;
+    font-size: x-large;
+    color: red;
+}
