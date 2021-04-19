@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist/",
+      "noImplicitAny": true,
+      "moduleResolution": "node",
+      "module": "esnext",//bilo je es6, menja se zbog await
+      "target": "es2017",//bilo je es5, menja se zbog await
+      "jsx": "react",
+      "allowJs": true
+    }
+}

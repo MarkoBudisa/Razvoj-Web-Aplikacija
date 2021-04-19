@@ -1,0 +1,13 @@
+.box-for-games{
+
+    border: 1px solid rebeccapurple;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.game-box{
+
+    display: flex;
+    font-size: x-large;
+}
