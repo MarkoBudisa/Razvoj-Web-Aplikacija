@@ -1,0 +1,28 @@
+.title{
+
+    display: flex;
+    font-size: xx-large;
+    color: lightcoral;
+}
+
+.input-limit{
+    display: flex;
+    width: 30%;
+}
+
+.number-label{
+
+    display: flex;
+    align-self: center;
+    font-size: 40px;
+}
+
+.main-box{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
