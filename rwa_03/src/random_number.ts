@@ -6,6 +6,7 @@ export class RandomNumber{
     private number: number;
     private lowLimit: number;
     private highLimit: number;
+    public controlSubject: Subject<any>;
 
     constructor(lowLimt: number, highLimit: number){
         this.lowLimit = lowLimt;

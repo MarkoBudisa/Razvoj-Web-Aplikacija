@@ -5,12 +5,9 @@ export class DrawRandomNumber{
 
     private randomNumber: RandomNumber;
     private box: HTMLElement;
-    private randNumValue: number;
-    private controlSubject: Subject<any>;
 
     constructor(box: HTMLElement){
         this.box = box;
-        this.randNumValue = -1;
     }
 
     draw(){
@@ -42,9 +39,9 @@ export class DrawRandomNumber{
         this.box.appendChild(btnStart);
         btnStart.onclick = () => {
             
-            this.controlSubject = new Subject();
             this.randomNumber = new RandomNumber(Number.parseInt(inputLowLimit.value),Number.parseInt(inputHighLimit.value));
-            this.randomNumber.rndObserver(this.controlSubject).subscribe(x => {
+            this.randomNumber.controlSubject = new Subject();
+            this.randomNumber.rndObserver(this.randomNumber.controlSubject).subscribe(x => {
                 numberLabel.innerHTML = x.toString();
             })
             btnStart.disabled = true;
@@ -60,7 +57,7 @@ export class DrawRandomNumber{
         btnStop.className = "btn";
         this.box.appendChild(btnStop);
         btnStop.onclick = () => {
-            this.randomNumber.stopEmiting(this.controlSubject);
+            this.randomNumber.stopEmiting(this.randomNumber.controlSubject);
             btnStop.disabled = true;
             btnStart.disabled = false;
         }
