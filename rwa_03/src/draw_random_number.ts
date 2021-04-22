@@ -1,6 +1,5 @@
-import { Observable, Subject } from "rxjs";
-import {takeUntil} from "rxjs/operators";
 import {RandomNumber} from "./random_number";
+import { Subject } from "rxjs";
 
 export class DrawRandomNumber{
 
@@ -45,7 +44,7 @@ export class DrawRandomNumber{
             
             this.controlSubject = new Subject();
             this.randomNumber = new RandomNumber(Number.parseInt(inputLowLimit.value),Number.parseInt(inputHighLimit.value));
-            this.rndObserver(this.controlSubject).subscribe(x => {
+            this.randomNumber.rndObserver(this.controlSubject).subscribe(x => {
                 numberLabel.innerHTML = x.toString();
             })
             btnStart.disabled = true;
@@ -61,24 +60,10 @@ export class DrawRandomNumber{
         btnStop.className = "btn";
         this.box.appendChild(btnStop);
         btnStop.onclick = () => {
-            this.stopEmiting(this.controlSubject);
+            this.randomNumber.stopEmiting(this.controlSubject);
             btnStop.disabled = true;
             btnStart.disabled = false;
         }
     }
-    rndObserver(controlObserver: Subject<any>){
-        const myObserver = new Observable((generator) => {
-            setInterval(() => {
-                generator.next(this.randomNumber.generateRandomNumber());
-            },5)
-        }).pipe(
-            takeUntil(controlObserver)
-        )
-        return myObserver;
-    }
-    stopEmiting(sub: Subject<any>){
-        
-        sub.next();
-        sub.complete();
-    }
+    
 }

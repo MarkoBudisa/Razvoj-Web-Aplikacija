@@ -1,3 +1,6 @@
+import { Observable, Subject } from "rxjs";
+import {takeUntil} from "rxjs/operators";
+
 export class RandomNumber{
 
     private number: number;
@@ -11,7 +14,24 @@ export class RandomNumber{
 
     generateRandomNumber(){
 
-        this.number = Math.round(Math.random()*this.highLimit) + this.lowLimit;
+        this.number = Math.round(Math.random()*this.highLimit);
+        if(this.number < this.lowLimit)
+            this.number += this.lowLimit;
         return this.number;
+    }
+    rndObserver(controlObserver: Subject<any>){
+        const myObserver = new Observable((generator) => {
+            setInterval(() => {
+                generator.next(this.generateRandomNumber());
+            },5)
+        }).pipe(
+            takeUntil(controlObserver)
+        )
+        return myObserver;
+    }
+    stopEmiting(sub: Subject<any>){
+        
+        sub.next();
+        sub.complete();
     }
 }
