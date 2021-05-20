@@ -1,0 +1,23 @@
+{
+    "movies": [
+        { 
+          "id": 1, 
+          "title": "Batman", 
+          "year": 2017, 
+          "score": 100 
+        },
+        { 
+            "id": 2, 
+            "title": "Spiderman", 
+            "year": 2018, 
+            "score": 70 
+        },
+        { 
+            "id": 3, 
+            "title": "Nun", 
+            "year": 2015, 
+            "score": 60 
+        }
+    ],
+    "actors": []
+}
